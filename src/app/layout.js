@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <CustomNavbar/>
-          <div>
+          <div className='mt-2 mb-2'>
             {children}
           </div>
         <Footer/> 
