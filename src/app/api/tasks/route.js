@@ -1,7 +1,10 @@
 import { Task } from "@/models/task";
 import { NextResponse } from "next/server";
+import jwt from "jsonwebtoken";
+import { User } from "@/models/user";
+import { connectDb } from "@/app/helper/db";
 
-// api/tasks
+connectDb();
 
 export async function GET(request){
     try {
@@ -18,26 +21,30 @@ export async function GET(request){
 }
 
 export async function POST(request){
-    const {title, content, userId} = await request.json();
+    const {title, content, status} = await request.json();
+
+    const authToken = await request.cookies.get('authToken')?.value;
+    const data = jwt.verify(authToken,process.env.JWT_KEY);
+    const user = await User.findById(data._id).select('-password');
 
     try {
         const task = Task({
             title: title,
             content: content,
-            userId: userId
+            userId: user._id,
+            status: status
         })
+        console.log(task)
         const createdTask = await task.save()
         return NextResponse.json(createdTask,
             {
                 status: 201
             })
     } catch (error) {
-
-        console.log(error)
+        console.log(error.message)
         return NextResponse.json({
-            message: "something went wrong !!",
+            message: error.message,
             status: 500
         })
-        
     }
 }

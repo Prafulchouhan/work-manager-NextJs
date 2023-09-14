@@ -4,7 +4,7 @@ import { responceMessage } from "@/app/helper/responceMessage";
 import { Task } from "@/models/task";
 import { NextResponse } from "next/server";
 
-connectDb()
+connectDb();
 
 
 export async function GET(request, {params}){
@@ -45,6 +45,7 @@ export async function PUT(request, {params}){
 
 export async function DELETE(request, {params}){
     const {taskId} = params;
+    console.log(taskId)
     try {
         const task = await Task.deleteOne({_id: taskId});
         return NextResponse.json(task,{

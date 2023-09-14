@@ -1,5 +1,8 @@
+import { connectDb } from "@/app/helper/db";
 import { User } from "@/models/user";
 import { NextResponse } from "next/server";
+
+connectDb()
 
 export async function GET(request, {params}){
     try {
