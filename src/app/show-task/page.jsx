@@ -1,5 +1,5 @@
 import React from 'react'
-import Showtask from './showtask';
+import Showtask from './ShowTask'
 
 export const metadata = {
     title: "Show Task : Work Manager"
