@@ -4,6 +4,7 @@ import loginSvg from "../../assets/login.svg";
 import Image from "next/image";
 import { addTask } from "@/services/taskService";
 import { taost, toast } from "react-toastify";
+//
 
 const AddTask = () => {
   // console.log("this is add task component");
