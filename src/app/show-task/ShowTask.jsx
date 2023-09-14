@@ -7,7 +7,7 @@ import Task from './Task'
 import { deleteTasksById } from '../services/taskService';
 import { toast } from 'react-toastify';
 
-const Showtask = () => {
+const ShowTask = () => {
     const context = useContext(UserContext);
     const [tasks, setTasks] = useState([])
 
@@ -44,4 +44,4 @@ const Showtask = () => {
   )
 }
 
-export default Showtask
+export default ShowTask
