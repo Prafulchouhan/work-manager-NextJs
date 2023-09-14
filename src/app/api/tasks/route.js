@@ -34,7 +34,6 @@ export async function POST(request){
             userId: user._id,
             status: status
         })
-        console.log(task)
         const createdTask = await task.save()
         return NextResponse.json(createdTask,
             {
